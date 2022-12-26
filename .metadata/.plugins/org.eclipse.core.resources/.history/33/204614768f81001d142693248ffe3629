@@ -1,0 +1,68 @@
+package com.rockycifu.server.controllers;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.rockycifu.server.models.LoginUser;
+import com.rockycifu.server.models.User;
+import com.rockycifu.server.services.UserService;
+
+@RestController
+@CrossOrigin
+@RequestMapping("/api/v1/users")
+public class UserController {
+
+	private final UserService service;
+
+	public UserController(UserService service) {
+		this.service = service;
+	}
+
+	@PostMapping("/register")
+	public ResponseEntity<Map<String, ?>> register(@RequestBody @Valid User user, BindingResult result) {
+		User registeredUser = service.register(user, result);
+
+		if (registeredUser == null) {
+			Map<String, String> errors = new HashMap<>();
+
+			for (FieldError fieldError : result.getFieldErrors()) {
+				errors.put(fieldError.getField(), fieldError.getDefaultMessage());
+			}
+			return new ResponseEntity<>(errors, HttpStatus.UNPROCESSABLE_ENTITY);
+		}
+		Map<String, User> data = new HashMap<>();
+		data.put("user", registeredUser);
+		return new ResponseEntity<>(data, HttpStatus.CREATED);
+	}
+
+	@PostMapping("/login")
+	public ResponseEntity<Map<String, ?>> login(@RequestBody @Valid LoginUser login, BindingResult result) {
+		User loggedInUser = service.login(login, result);
+
+		if (loggedInUser == null) {
+			Map<String, String> errors = new HashMap<>();
+
+			for (FieldError fieldError : result.getFieldErrors()) {
+				errors.put(fieldError.getField(), fieldError.getDefaultMessage());
+			}
+			return new ResponseEntity<>(errors, HttpStatus.UNPROCESSABLE_ENTITY);
+		}
+		Map<String, User> data = new HashMap<>();
+		data.put("user", loggedInUser);
+		return new ResponseEntity<>(data, HttpStatus.CREATED);
+	}
+
+}

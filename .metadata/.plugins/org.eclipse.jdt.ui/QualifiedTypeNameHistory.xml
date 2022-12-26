@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.rockycifu.server.models.Address"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.Map"/>
+    <fullyQualifiedTypeName name="com.rockycifu.server.models.Option"/>
+    <fullyQualifiedTypeName name="com.rockycifu.server.models.Test"/>
+    <fullyQualifiedTypeName name="com.rockycifu.server.models.Question"/>
+    <fullyQualifiedTypeName name="java.util.Set"/>
+    <fullyQualifiedTypeName name="com.rockycifu.server.services.UserService"/>
+    <fullyQualifiedTypeName name="com.rockycifu.server.models.User"/>
+</qualifiedTypeNameHistroy>

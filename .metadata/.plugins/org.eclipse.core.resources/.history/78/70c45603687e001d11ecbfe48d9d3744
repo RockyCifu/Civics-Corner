@@ -1,0 +1,21 @@
+package com.rockycifu.civics.seeders;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+@Component
+public class MainSeeder implements CommandLineRunner{
+
+	private final QuestionSeeder questionSeeder;
+	
+	public MainSeeder(QuestionSeeder questionSeeder) {
+		this.questionSeeder = questionSeeder;
+	}
+	
+	@Override
+	public void run(String... args) throws Exception {	
+		questionSeeder.seed();
+		
+	}
+
+}

@@ -1,0 +1,59 @@
+package com.rockycifu.server.services;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Random;
+import java.util.Set;
+
+import org.springframework.stereotype.Service;
+
+import com.rockycifu.server.models.Question;
+import com.rockycifu.server.models.Test;
+import com.rockycifu.server.repositories.TestRepository;
+
+@Service
+public class TestService {
+
+	private final TestRepository repository;
+	private final QuestionService questionService;
+
+	public TestService(TestRepository repository, QuestionService questionService) {
+		this.repository = repository;
+		this.questionService = questionService;
+	}
+
+	public List<Test> findAll() {
+		return (List<Test>) repository.findAll();
+	}
+
+	public Test findOne(Long id) {
+		Optional<Test> test = repository.findById(id);
+		return test.orElse(null);
+	}
+
+	public Test persistOne(Test test) {
+		return repository.save(test);
+	}
+
+	public Test updateOne(Test test) {
+		return repository.save(test);
+	}
+
+	public void deleteOne(Long id) {
+		repository.deleteById(id);
+	}
+	
+	public Test generateOne() {
+		Random random = new Random();	
+		List<Question> allQuestions = questionService.findAll();
+		Set<Question> testQuestions = new HashSet<>();
+		while(testQuestions.size() < 10) {
+			testQuestions.add(allQuestions.get(random.nextInt(101 - 1) + 1));
+		}
+		for(Question question : testQuestions) {
+			System.out.printf("%d. %s", question.getId(), question.getText());
+		}
+		return null;
+	}
+}

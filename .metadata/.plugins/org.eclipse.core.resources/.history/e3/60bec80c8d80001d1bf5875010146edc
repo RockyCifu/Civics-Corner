@@ -1,0 +1,5 @@
+package com.rockycifu.server.controllers;
+
+public class TestController {
+
+}

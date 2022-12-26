@@ -1,0 +1,11 @@
+package com.rockycifu.civics.repositories;
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import com.rockycifu.civics.models.Option;
+
+@Repository
+public interface OptionRepository extends CrudRepository<Option, Long> {
+
+}

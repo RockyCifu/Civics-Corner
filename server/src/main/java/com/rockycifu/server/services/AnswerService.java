@@ -1,0 +1,39 @@
+package com.rockycifu.server.services;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import com.rockycifu.server.models.Answer;
+import com.rockycifu.server.repositories.AnswerRepository;
+
+@Service
+public class AnswerService {
+	private final AnswerRepository repository;
+
+	public AnswerService(AnswerRepository repository) {
+		this.repository = repository;
+	}
+
+	public List<Answer> findAll() {
+		return (List<Answer>) repository.findAll();
+	}
+
+	public Answer findOne(Long id) {
+		Optional<Answer> answer = repository.findById(id);
+		return answer.orElse(null);
+	}
+
+	public Answer persistOne(Answer answer) {
+		return repository.save(answer);
+	}
+
+	public Answer updateOne(Answer answer) {
+		return repository.save(answer);
+	}
+
+	public void deleteOne(Long id) {
+		repository.deleteById(id);
+	}
+}

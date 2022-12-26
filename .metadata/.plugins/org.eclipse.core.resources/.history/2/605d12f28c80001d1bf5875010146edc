@@ -1,0 +1,40 @@
+package com.rockycifu.server.services;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import com.rockycifu.server.models.Test;
+import com.rockycifu.server.repositories.TestRepository;
+
+@Service
+public class TestService {
+
+	private final TestRepository repository;
+
+	public TestService(TestRepository repository) {
+		this.repository = repository;
+	}
+	
+	public List<Test> findAll() {
+		return (List<Test>) repository.findAll();
+	}
+
+	public Test findOne(Long id) {
+		Optional<Test> test = repository.findById(id);
+		return test.orElse(null);
+	}
+
+	public Test persistOne(Test test) {
+		return repository.save(test);
+	}
+
+	public Test updateOne(Test test) {
+		return repository.save(test);
+	}
+
+	public void deleteOne(Long id) {
+		repository.deleteById(id);
+	}
+}

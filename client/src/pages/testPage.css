@@ -1,0 +1,111 @@
+#test-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 0.5rem;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.main-container aside {
+  padding: 2rem 1.5rem;
+  border-radius: 8px;
+  color: var(--accent-color);
+  background-color: var(--light-color);
+  text-align: center;
+  min-width: 250px;
+}
+
+.main-container aside h3 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.main-container aside h3:first-of-type {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.main-container aside span {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.test-container,
+.question-container,
+.result-container {
+  width: 750px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  padding: 2rem 1.5rem;
+  border-radius: 8px;
+  background-color: var(--light-color);
+}
+
+.test-container h3,
+.question-container h3,
+.result-container h3 {
+  font-size: 1.5rem;
+  color: var(--accent-color);
+}
+
+.question-container h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.test-container p {
+  color: #444;
+}
+
+.test-container button {
+  width: 250px;
+  margin: 0 auto;
+  padding: 0.5rem 2rem;
+  font-size: 1.1rem;
+  border: 2px solid var(--accent-color);
+  background-color: var(--accent-color);
+  color: var(--light-color);
+}
+
+.options-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.option-btn {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border: 2px solid var(--accent-color);
+  border-radius: 8px;
+  background-color: var(--accent-color);
+  color: var(--light-color);
+  width: 100%;
+  cursor: pointer;
+}
+
+.result-container {
+  text-align: center;
+}
+
+.result-container h3 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.result-container button {
+  width: 250px;
+  margin: 0 auto;
+  padding: 0.5rem 2rem;
+  font-size: 1.1rem;
+  border: 2px solid var(--accent-color);
+  background-color: var(--accent-color);
+  color: var(--light-color);
+}
